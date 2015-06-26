@@ -1,0 +1,115 @@
+<script>
+var MapOverlay = (function(mapOverlay){
+  'use strict';
+  
+  /**
+  *called to initialize the map 
+  *@param {object} userSettings the settings
+  *@return {MapOverlay} self for chainging
+  */
+  mapOverlay.initialize = function (userSettings) {
+    
+    // clone because we might tweak
+    mapOverlay.settings = JSON.parse(JSON.stringify(userSettings));
+
+    // if there are margins around the overlay then we'll size the map to show info around the image
+    if (mapOverlay.settings.overlay && !mapOverlay.settings.zoom) {
+
+      // set the map boundaries using the margins
+      mapOverlay.fitBounds = [ 
+        // top left
+        new google.maps.LatLng(mapOverlay.settings.overlay.ne.lat  , mapOverlay.settings.overlay.sw.lon ),
+        // bottom right
+        new google.maps.LatLng(mapOverlay.settings.overlay.sw.lat  , mapOverlay.settings.overlay.ne.lon )
+      ].reduce (function (p,c){
+        p.extend(c);
+        return p;
+      },new google.maps.LatLngBounds());
+    }
+  
+    // center the image on the map if no center is given
+    if (!mapOverlay.settings.map.center) {
+      if (mapOverlay.settings.overlay.ne && mapOverlay.settings.overlay.sw) {
+        mapOverlay.settings.map.center = { 
+          lat: (mapOverlay.settings.overlay.ne.lat - mapOverlay.settings.overlay.sw.lat)/2 + mapOverlay.settings.overlay.sw.lat,
+          lon: (mapOverlay.settings.overlay.ne.lon - mapOverlay.settings.overlay.sw.lon)/2 + mapOverlay.settings.overlay.sw.lon
+        };
+      }
+    }
+    
+    return mapOverlay;
+  };
+  
+  mapOverlay.addMarkers = function (data) {
+    
+      mapOverlay.data = data;
+      
+      mapOverlay.data.forEach(function(d){
+        var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(d.lat,d.lon),
+          title: d.title,
+          icon:d.markerUrl,
+          map:mapOverlay.map
+        });
+        if (d.markerUrlx) {
+           marker.icon= d.markerUrl;
+        }
+  
+      });
+    
+  }
+  mapOverlay.addOverlay = function () {
+    mapOverlay.overlay.setMap(mapOverlay.map);
+  };
+  
+  mapOverlay.removeOverlay = function () {
+    mapOverlay.overlay.setMap(null);
+  }
+  
+  /**
+   * set up map & overlay & render
+   */
+  mapOverlay.render= function() {
+    
+    var settings = mapOverlay.settings;
+
+    // set up te options
+    var mapOptions = {
+      center: new google.maps.LatLng(settings.map.center.lat, settings.map.center.lon),
+      mapTypeId: google.maps.MapTypeId.SATELLITE
+    };
+    
+    if (settings.map.zoom) {
+      mapOptions.zoom = settings.map.zoom;
+    }
+
+    // create a map
+    mapOverlay.map = new google.maps.Map(document.getElementById(settings.map.canvas), mapOptions);
+
+    // maybe there's amargin calulation
+    if(mapOverlay.fitBounds) {
+      mapOverlay.map.fitBounds(mapOverlay.fitBounds);
+    }
+    // if there's an overlay then show it
+    if (settings.overlay) {
+      
+      // position of overlay
+      var swBound = new google.maps.LatLng(settings.overlay.sw.lat, settings.overlay.sw.lon);
+      var neBound = new google.maps.LatLng(settings.overlay.ne.lat, settings.overlay.ne.lon);
+      var bounds = new google.maps.LatLngBounds(swBound, neBound);
+     
+      // show it
+      mapOverlay.overlay = new google.maps.GroundOverlay(settings.overlay.img.src,bounds);
+      mapOverlay.overlay.setOpacity (settings.overlay.img.opacity)  
+      mapOverlay.addOverlay();
+    }
+
+  };
+
+
+  return mapOverlay;
+}) (MapOverlay || {});
+
+
+
+</script>
