@@ -1,5 +1,5 @@
 # Google Apps Script Project: lotOverlay
-This repo (lotOverlay) was automatically updated on 26 June 2015 14:22:17 BST by GasGit
+This repo (lotOverlay) was automatically updated on 02 July 2015 09:34:23 BST by GasGit
 
 For more information see the [desktop liberation site](http://ramblings.mcpher.com/Home/excelquirks/drivesdk/gettinggithubready "desktop liberation") or [contact me on G+](https://plus.google.com/+BruceMcpherson "Bruce McPherson - GDE")
 ## Details for Apps Script project lotOverlay
