@@ -1,0 +1,38 @@
+<!-- This CSS package applies Google styling; it should always be included. -->
+<link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
+
+<style>
+.spinner {  
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:28;
+    height:28;
+    z-index:1000;
+    margin-left: -14px;
+    margin-top: -14px;
+    display:none;
+}
+</style>
+
+<!-- Page content -->
+
+
+<div id="map-canvas" class="block" style="width:92%;height:480px;margin:10px"></div>
+<div class="block">
+<input type="checkbox" id="option-overlay" checked>
+
+<label for="option-overlay">
+    Show overlay
+</label>
+</div>
+<div class="block">For more info on how to do this see <a href="http://ramblings.mcpher.com" target="_blank">Desktop liberation</a></div>
+<div id="error"></div>
+<div id="spinner" class="spinner">
+    <img src="https://storage.googleapis.com/goinggas.com/public/hosting/sites/xliberation/image/ajax-loader.gif"/>
+</div>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+<?!= HtmlService.createHtmlOutputFromFile('mapoverlay.js').getContent(); ?>
+<?!= HtmlService.createHtmlOutputFromFile('main.js').getContent(); ?>
