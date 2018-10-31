@@ -1,5 +1,5 @@
 # Google Apps Script Project: lotOverlay
-This repo (lotOverlay) was automatically updated on 16 October 2016 15:32:39 BST by GasGit
+This repo (lotOverlay) was automatically updated on 31 October 2018 11:41:39 GMT by GasGit
 
 For more information see the [desktop liberation site](http://ramblings.mcpher.com/Home/excelquirks/drivesdk/gettinggithubready "desktop liberation") or [contact me on G+](https://plus.google.com/+BruceMcpherson "Bruce McPherson - GDE")
 ## Details for Apps Script project lotOverlay
@@ -14,6 +14,7 @@ Server| server_js
 Addon| server_js
 main.js| html
 mapoverlay.js| html
+appsscript| json
 ### Directly referenced libraries
 no libraries discovered
 ### All dependencies and sub dependencies
@@ -22,5 +23,7 @@ no libraries discovered
 *library*|*identifier*|*version*
 --- | --- | --- 
 Drive| Drive|v2
-###Need more detail ?
+### Scopes required
+no scopes discovered
+### Need more detail ?
 You can see [full project info as json here](info.json)
