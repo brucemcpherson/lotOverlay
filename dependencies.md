@@ -1,7 +1,7 @@
 # Google Apps Script Project: lotOverlay
 This repo (lotOverlay) was automatically updated on 31 October 2018 11:41:39 GMT by GasGit
 
-For more information see the [desktop liberation site](http://ramblings.mcpher.com/Home/excelquirks/drivesdk/gettinggithubready "desktop liberation") or [contact me on G+](https://plus.google.com/+BruceMcpherson "Bruce McPherson - GDE")
+For more information see the [desktop liberation site](https://sites.google.com/a/mcpher.com/share/system/app/pages/search?scope=search-site&q=mapoverlay "desktop liberation") or [contact me on Gitter](https://gitter.im/desktopliberation/community "Bruce McPherson - GDE")
 ## Details for Apps Script project lotOverlay
 Where possible directly referenced or sub referenced library sources have been copied to this repository, or you can include the library references shown. 
 The shared link for [lotOverlay is here](https://script.google.com/d/1R6JBQJmoFijHSIJ7DwWh2_1RxPPA3k0T389lumUkPyyuowBc9yFY3EJx/edit?usp=sharing "open in the GAS IDE")
